@@ -36,7 +36,7 @@
 @keyframes example {
   0%   {color:transparent  }
 
-  100% {color: cyan}
+  100% {color: white}
 }
 
 
@@ -45,7 +45,7 @@
   background:green;
   position: relative;
   left: 100px;
-  color:cyan;
+  color:white;
   font-size: 0.9em;
   font : cursive;
   animation-name: example;
@@ -55,21 +55,53 @@
 }
 
 
+
+
+.loading_thing{
+  text-align: center;
+  display: block;
+  color: black;
+  background-color: transparent;
+  position: relative;
+  font-size: 150px;
+  animation-name: "loading_color";
+  animation-duration: 0.1s;
+  animation-play-state: running;
+  
+
+}
+@keyframes loading_color{
+  from{
+    color: black;
+  }
+  to{
+    color: darkred;
+  }
+  to{
+    color: black;
+  }
+
+}
+
+
 .sub-bod{
   background-image: url("r48608_39_satellite_image_triplesat_helsinki_finland_20170716-2.jpg");
+  background-attachment: fixed;
+  
   
 }
 
 
 .App-header {
   background-image: url("r48608_39_satellite_image_triplesat_helsinki_finland_20170716-2.jpg");
+  background-attachment: fixed;
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(35px + 2vmin);
   color: white;
 }
 

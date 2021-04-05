@@ -4,6 +4,7 @@ import './App.css';
 import axios from 'axios';
 import { GoogleMap, LoadScript} from '@react-google-maps/api'
 import Mark from './components/MapMarker'
+require('dotenv').config()
 
 const App =() => {
   const [center, setCenter] = useState({
@@ -14,7 +15,7 @@ const App =() => {
   
 
   
-  const api_key = 'AIzaSyByr3VXd1vbL7HcpRizHpF-dy4yYd1_4Uo'
+  const api_key = process.env.KEY
   const [siteData, setData] = useState(null)
   
 
@@ -45,8 +46,8 @@ const App =() => {
     console.log(siteData == null)
     return (
 
-    <div>
-      null
+    <div className="loading_thing">
+      Loading..
 
 
     </div>

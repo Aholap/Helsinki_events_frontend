@@ -14,7 +14,7 @@ const Page = (page) => {
 
         return(
         
-            <button className='button' onClick = {() => setShow(show === false ? true : false)}> {page.page.name.fi} </button>
+            <button className='button' onClick = {() => setShow(show === false ? true : false)}>+ {page.page.name.fi} </button>
             
         
 
@@ -24,7 +24,7 @@ const Page = (page) => {
     else{
         return(
         <div >
-            <button className='button' onClick = {() => setShow(show === false ? true : false)}> {page.page.name.fi} </button>
+            <button className='button' onClick = {() => setShow(show === false ? true : false)}>- {page.page.name.fi} </button>
                 <p className='body'>
                     {page.page.name.en}
                 </p>
@@ -32,7 +32,7 @@ const Page = (page) => {
                     Missä ja milloin? : {page.page.where_when_duration.where_and_when} 
                 </p>
                 <p className='body'>
-                    Kesto: {page.page.where_when_duration.duration}
+                    Kesto: {page.page.where_when_duration.duration ? page.page.where_when_duration.duration : "Ei tietoa"} 
                 </p>
             
                 <p className='body'>
