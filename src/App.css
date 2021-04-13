@@ -42,9 +42,10 @@
 
 .body {
   display: block;
-  background:green;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 75%;
   position: relative;
-  left: 100px;
+  left: 40px;
   color:white;
   font-size: 0.9em;
   font : cursive;
@@ -52,6 +53,12 @@
   animation-duration: 3s;
   
   
+  
+}
+
+.bodyText{
+  opacity: 100%;
+  color: yellow;
 }
 
 

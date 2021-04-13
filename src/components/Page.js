@@ -25,21 +25,24 @@ const Page = (page) => {
         return(
         <div >
             <button className='button' onClick = {() => setShow(show === false ? true : false)}>- {page.page.name.fi} </button>
-                <p className='body'>
+               
+               <div className="body">
+                <p >
                     {page.page.name.en}
                 </p>
-                <p className='body'>
+                <p >
                     Missä ja milloin? : {page.page.where_when_duration.where_and_when} 
                 </p>
-                <p className='body'>
+                <p >
                     Kesto: {page.page.where_when_duration.duration ? page.page.where_when_duration.duration : "Ei tietoa"} 
                 </p>
             
-                <p className='body'>
+                <p >
                     Sivut : 
                 <a href={page.page.info_url}>{page.page.info_url}</a>
                     
                 </p>
+                </div>
         </div>
         )
     }
