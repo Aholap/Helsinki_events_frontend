@@ -11,12 +11,8 @@ const Page = (page) => {
 
     
     
-    const a = parse.htmlToDOM(page.page.description.body)
-    console.log(a)
+    const a = parse.htmlToDOM(page.page.description.body)    
     const b = parse.domToReact(a)
-    console.log(b)
-
-    console.log(<div></div>)
 
     
     if(!show){

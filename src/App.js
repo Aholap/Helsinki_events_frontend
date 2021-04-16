@@ -21,7 +21,7 @@ const App =() => {
 
   const get_api_data =async () => {
     const a = await axios.get('https://tranquil-brushlands-44401.herokuapp.com/events')
-    console.log(a)
+    
     return a.data
 
   }
@@ -42,8 +42,7 @@ const App =() => {
   
 
   if (siteData === null){
-    console.log(typeof(siteData))
-    console.log(siteData == null)
+ 
     return (
 
     <div className="loading_thing">
@@ -54,7 +53,7 @@ const App =() => {
   )
   }
   else{
-    console.log(siteData)
+
     return(
       <div className='sub-bod'>
         <h1 className='App-header'>
