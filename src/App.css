@@ -42,8 +42,9 @@
 
 .body {
   display: block;
-  background: rgba(0, 0, 0, 0.7);
-  opacity: 75%;
+  background: rgba(0, 0, 0, 0.5);
+  
+  
   position: relative;
   left: 40px;
   color:white;
