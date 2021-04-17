@@ -45,7 +45,7 @@ const App =() => {
  
     return (
 
-    <div className="loading_thing">
+    <div className="loader">
       Loading..
 
 
@@ -71,8 +71,11 @@ const App =() => {
         
         id="circle-example"
         mapContainerStyle={{
-          height: "400px",
-          width: "800px"
+          height: 400,
+          width: 600,
+          position:'relative',
+          left:340
+          
         }}
         zoom={9}
         center={center}>

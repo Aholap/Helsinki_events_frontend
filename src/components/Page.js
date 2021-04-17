@@ -38,7 +38,7 @@ const Page = (page) => {
                     {page.page.name.en}
                 </p>
                 <p >
-                    Missä ja milloin? : {page.page.where_when_duration.where_and_when ? page.page.where_when_duration.where_and_when : "No info"} 
+                    Missä ja milloin? : {page.page.where_when_duration.where_and_when ? page.page.where_when_duration.where_and_when : "Ei tietoa"} 
                 </p>
                 <p >
                     Kesto: {page.page.where_when_duration.duration ? page.page.where_when_duration.duration : "Ei tietoa"} 
