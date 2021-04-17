@@ -119,6 +119,24 @@
   color: #61dafb;
 }
 
+.topButton{
+  position: fixed;
+  left: 1100px;
+  bottom: 0;
+  text-align: center;
+  
+  color:white;
+  background-color: green;
+  opacity: 75%;
+  width: 100px;
+  height: 75px;
+  display: none;
+  box-shadow: #0d2404;
+
+  
+
+}
+
 
 .loader {
   text-align: center;
