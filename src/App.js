@@ -7,20 +7,20 @@ import Mark from './components/MapMarker'
 require('dotenv').config()
 
 const App =() => {
+
   const [center, setCenter] = useState({
     lat: 60.192059,
     lng: 24.945831
   })
-
-  
-
   
   const api_key = process.env.KEY
   const [siteData, setData] = useState(null)
 
   var topButton = null
+  var topButtonText = null
   useEffect(() => {
     topButton = document.getElementById("toTop")
+    topButtonText = document.getElementById("topButText")
     
   })
 
@@ -29,26 +29,49 @@ const App =() => {
     
     document.body.scrollTop = 550
     document.documentElement.scrollTop = 550
+    
   }
 
   
 
   const showScrollButton = () => {
-    console.log(topButton)
-
     if (topButton) {
 
       if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000){
-        topButton.style.display = "block"
+        topButton.style.display = "inline-block"
+        topButtonText.style.display = "block"
       }
-      else{
-        
+      else
+      {   
         topButton.style.display = "none"
+        topButtonText.style.display = "none"
       }
     }
 
 
   }
+
+  const highlightTopScroller = () => {
+    
+    if (topButton && topButtonText){
+      topButton.style.borderRight =  "5px solid white"
+      topButton.style.borderBottom =  "5px solid white"
+      topButtonText.style.color = "white"
+      topButton.style.opacity = 1
+      topButtonText.style.opacity = 1
+
+    }
+
+
+  }
+
+  const unHighlightScroller = () => {
+
+    topButton.style.opacity = 0.8
+    topButtonText.style.opacity = 0.8
+
+  }
+
 
   window.onscroll = showScrollButton
 
@@ -64,12 +87,8 @@ const App =() => {
 
 
   useEffect(() => {
-
-    
     get_api_data()
     .then(d => setData(d.data))
-    
-    
 
   }, [])
   
@@ -92,66 +111,44 @@ const App =() => {
     return(
       <div className='sub-bod'>
 
-        <button id="toTop" className="topButton" onClick = {() => scrollToPageTop()}  >
+        <p className="topButText" id="topButText">
           Scroll to top
+        </p>
+
+        <button 
+        id="toTop" className="topButton" 
+        onClick = {() => scrollToPageTop()}  
+        onMouseOver = {() => highlightTopScroller()} 
+        onMouseLeave = {() => unHighlightScroller()} >
         </button>
 
 
         <h1 className='App-header'>
-        Tapahtumat Helsingissä
+          Tapahtumat Helsingissä
         </h1>
-
-
-
-
-        <LoadScript
         
-        id="script-loader"
-        googleMapsApiKey={api_key}
+        <LoadScript id="script-loader" googleMapsApiKey={api_key}>
         
-      >
         <GoogleMap
-        
         id="circle-example"
         mapContainerStyle={{
           height : 400,
           width : window.width,
           position:'relative',
-          
-          
         }}
         zoom={9}
         center={center}>
 
-
         {siteData.map(d => 
-          //Marker component!!!!!!!!!!!!!
+          
             <Mark key={d.id} setC = {() => setCenter({lat: d.location.lat, lng: d.location.lon})} data = {d}></Mark>
         )}
-
-
-          
-          
-
-          
-        
-        
-        </GoogleMap>
-        
+        </GoogleMap>        
       </LoadScript>
-
         
         {
         siteData.map(d => 
         <Page key={d.id} page={d}/>)}
-
-
-
-     
-        
-
-
-
 
       </div>
     )

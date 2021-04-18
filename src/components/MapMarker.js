@@ -8,7 +8,7 @@ const Mark = (props) => {
     const [show, setShow] = useState(null)
     const d = props.data
     
-    console.log(show === null)
+
     const InfoWin = () => {
         return(
             
