@@ -4,6 +4,7 @@ import './App.css';
 import axios from 'axios';
 import { GoogleMap, LoadScript} from '@react-google-maps/api'
 import Mark from './components/MapMarker'
+
 require('dotenv').config()
 
 const App =() => {
@@ -15,14 +16,33 @@ const App =() => {
   
   const api_key = process.env.KEY
   const [siteData, setData] = useState(null)
+  const [showData, setShowData] = useState(null)
+  const [filterText, setFilterText] = useState("")
+
+  
 
   var topButton = null
   var topButtonText = null
+  var textFilter = null
+  
+
+  const updateValue = (val) => {
+    setFilterText(val)
+  }
+  
   useEffect(() => {
     topButton = document.getElementById("toTop")
     topButtonText = document.getElementById("topButText")
+    textFilter = document.getElementById("filter")
+
+    if (textFilter){
+      textFilter.addEventListener("input", updateValue(textFilter.value));
+    
+    }
+    
     
   })
+  
 
 
   const scrollToPageTop = () => {
@@ -73,6 +93,10 @@ const App =() => {
   }
 
 
+
+  
+
+
   window.onscroll = showScrollButton
 
   
@@ -87,15 +111,28 @@ const App =() => {
 
 
   useEffect(() => {
-    get_api_data()
-    .then(d => setData(d.data))
+    const a = get_api_data()
+    .then((d) =>{
+       setData(d.data)
+       setShowData(d.data)
+      })
+
+    
+
+    
 
   }, [])
+
+  const filterResults = () => {
+    setFilterText(textFilter.value)
+    setShowData(siteData.filter(d => d.name.fi.toLowerCase().includes(textFilter.value.toLowerCase())))
+
+  }
   
 
   
 
-  if (siteData === null){
+  if (showData === null){
  
     return (
 
@@ -105,7 +142,12 @@ const App =() => {
 
     </div>
   )
+  
+
   }
+  
+
+
   else{
 
     return(
@@ -145,11 +187,24 @@ const App =() => {
         )}
         </GoogleMap>        
       </LoadScript>
+
+      <form className="form"> 
+ 
+          <label> Type to filter results
+
+          </label>
+          <input id="filter" className="label" type="text" value={filterText} onChange = {() => filterResults()}/>
+
+          <h1></h1>
+
+      </form>
+
         
         {
-        siteData.map(d => 
+        showData.map(d => 
         <Page key={d.id} page={d}/>)}
 
+        
       </div>
     )
   }

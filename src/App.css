@@ -15,6 +15,20 @@
  
 }
 
+.form{
+  display: block;
+  margin-top: 100px;
+  margin-bottom: 80px;
+  margin-right: 945px;
+  margin-left: 50px;
+  width: 300px;
+  font-size: 20px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+
 .button {
   
   color:white;
